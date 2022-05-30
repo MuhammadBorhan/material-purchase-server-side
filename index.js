@@ -54,6 +54,15 @@ async function run() {
             res.send(products);
         });
 
+        // display only individual vendors products
+        app.get('/vproduct', async (req, res) => {
+            const id = req.query.id;
+            const query = { id: id };
+            const cursor = productsCollection.find(query);
+            const products = await cursor.toArray();
+            res.send(products);
+        });
+
         // display all vendor
         app.get('/vendor', async (req, res) => {
             const query = {};
