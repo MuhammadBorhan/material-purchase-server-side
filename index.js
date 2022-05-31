@@ -54,6 +54,30 @@ async function run() {
             res.send(products);
         });
 
+        // display only Owners product
+        app.get('/Ownproducts', async (req, res) => {
+            const pd = req.body;
+            const query = { id: pd.id };
+            if (query) {
+
+                const cursor = productsCollection.find(query);
+                const products = await cursor.toArray();
+                res.send(products);
+            }
+        });
+
+        // display only all vendors product
+        app.get('/AVnproducts', async (req, res) => {
+            const pd = req.body;
+            const query = { id: pd.id };
+            if (query) {
+
+                const cursor = productsCollection.find(query);
+                const products = await cursor.toArray();
+                res.send(products);
+            }
+        });
+
         // display only individual vendors products
         app.get('/vproduct', async (req, res) => {
             const id = req.query.id;
