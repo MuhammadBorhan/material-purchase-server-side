@@ -67,9 +67,9 @@ async function run() {
         });
 
         // display only all vendors product
-        app.get('/AVnproducts', async (req, res) => {
-            const pd = req.body;
-            const query = { id: pd.id };
+        app.get('/AVproduct', async (req, res) => {
+            const pdct = req.body;
+            const query = { secret: pdct.secret };
             if (query) {
 
                 const cursor = productsCollection.find(query);
