@@ -119,6 +119,14 @@ async function run() {
             res.send(Vendors);
         });
 
+        // Remove purchase order
+        app.delete('/purchase/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await purchaseCollection.deleteOne(query);
+            res.send(result);
+        });
+
         // display purchase invoice for individual
         app.get('/purchase/:id', async (req, res) => {
             const id = req.params.id;
